@@ -2,7 +2,26 @@
 
 ## 安装方法
 
-1. 添加以下内容到Gemfile
+1. 创建项目 project
+
+```bash
+$ rails new project --api
+```
+
+示例 项目名称为 igogo
+
+```bash
+$ rails new igogo --api
+```
+
+2. 添加以下内容到.gitignore
+
+```text
+.idea
+.vscode
+```
+
+3. 添加以下内容到Gemfile
 
 ```ruby
 gem 'jwt'
@@ -14,7 +33,7 @@ gem "manage-api"
 
 ```
 
-2. 运行以下命令
+4. 运行以下命令
 
 ```bash
 $ bundle
@@ -30,7 +49,7 @@ $ rails generate manage
 $ rails generate scope Scope
 ```
 
-如 Scope 为 Admin
+示例 Scope 为 Admin
 
 ```bash
 $ rails generate scope Admin
