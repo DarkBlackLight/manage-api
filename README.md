@@ -1,7 +1,5 @@
 # Manage API
 
-Short description and motivation.
-
 ## 安装方法
 
 1. 添加以下内容到Gemfile
@@ -21,18 +19,22 @@ gem "manage-api"
 ```bash
 $ bundle
 $ rails manage_api_engine:install:migrations
-$ rails manage_api:install
+$ rails generate manage
 ```
 
-3. 添加以下代码至 app/models/application_record.rb
+## 使用方法
 
-```ruby
-  include Filterable
+定义 Scope, 并运行以下命令
+
+```bash
+$ rails generate scope Scope
 ```
 
-## Contributing
+如 Scope 为 Admin
 
-Contribution directions go here.
+```bash
+$ rails generate scope Admin
+```
 
 ## License
 
