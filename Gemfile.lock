@@ -2,9 +2,6 @@ PATH
   remote: .
   specs:
     manage-api (0.1.0)
-      bcrypt
-      cancancan
-      jwt
       rails (>= 7.0.4.3)
 
 GEM
@@ -75,9 +72,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    bcrypt (3.1.18)
     builder (3.2.4)
-    cancancan (3.5.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -86,7 +81,6 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    jwt (2.7.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)

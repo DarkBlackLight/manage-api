@@ -12,7 +12,7 @@ module ManageAuthControllerConcern
     def validate_username_password
       @resource = User.where(username: params[:user][:username]).first
 
-      if @resource&.authenticate(params[:password])
+      if @resource&.authenticate(params[:user][:password])
         setup_token
         render json: { data: set_show_json(@resource) }, status: :ok
       else
@@ -42,22 +42,14 @@ module ManageAuthControllerConcern
 
     private
 
-    # def resource_params
-    #   params.require(:user).permit(:email, :username, :password)
-    # end
-
-    def set_index_json(resources)
-      resources.as_json(only: [:id, :first_name, :last_name, :full_name, :email, :username, :token, :source_type, :source_id])
-    end
-
     def set_show_json(resource)
-      resource.as_json(only: [:id, :username, :email], methods: :token)
+      resource.as_json(only: [:id, :username, :email, :token, :token_expired_at])
     end
 
     def setup_token
-      @resource.token = jwt_encode(id: @resource.id)
+      @resource.update_columns(token: Digest::SHA256.hexdigest(Time.zone.now.to_s + rand(1000).to_s),
+                               token_expired_at: Time.zone.now + 1.year)
     end
-
   end
 end
 

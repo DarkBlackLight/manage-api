@@ -3,9 +3,6 @@ module UserConcern
 
   included do
     require "securerandom"
-    attr_accessor :token
-    attr_accessor :refresh_token
-
     has_secure_password
 
     validates :name, presence: true

@@ -7,7 +7,11 @@ Short description and motivation.
 1. 添加以下内容到Gemfile
 
 ```ruby
+gem 'bcrypt'
+gem 'cancancan'
+gem 'kaminari'
 gem "manage-api"
+
 ```
 
 2. 运行以下命令
@@ -18,6 +22,11 @@ $ rails manage_api:install
 $ rails manage_api_engine:install:migrations
 ```
 
+3. 添加以下代码至 app/models/application_record.rb
+
+```ruby
+  include Filterable
+```
 
 ## Contributing
 
