@@ -7,9 +7,11 @@ Short description and motivation.
 1. 添加以下内容到Gemfile
 
 ```ruby
+gem 'jwt'
 gem 'bcrypt'
 gem 'cancancan'
 gem 'kaminari'
+gem "rack-cors"
 gem "manage-api"
 
 ```

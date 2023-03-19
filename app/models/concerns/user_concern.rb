@@ -5,6 +5,8 @@ module UserConcern
     require "securerandom"
     has_secure_password
 
+    attr_accessor :access_token
+
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true, if: Proc.new { |a| a.authenticate_method == 'email' }
     validates :username, presence: true, uniqueness: true, if: Proc.new { |a| a.authenticate_method == 'password' }

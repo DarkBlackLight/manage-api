@@ -33,7 +33,7 @@ module ManageAuthControllerConcern
 
     def logout
       if @current_user
-        @current_user.update_columns({ token: nil, token_created_at: Time.now })
+        revoke_token
         render json: { data: set_show_json(@current_user) }
       else
         render json: { data: 'Unauthorized' }, status: :unprocessable_entity
@@ -43,12 +43,17 @@ module ManageAuthControllerConcern
     private
 
     def set_show_json(resource)
-      resource.as_json(only: [:id, :username, :email, :token, :token_expired_at])
+      resource.as_json(only: [:id, :username, :email], methods: :access_token)
     end
 
     def setup_token
-      @resource.update_columns(token: Digest::SHA256.hexdigest(Time.zone.now.to_s + rand(1000).to_s),
+      @resource.update_columns(token: Digest::SHA1.hexdigest(Time.zone.now.to_s + rand(1000).to_s),
                                token_expired_at: Time.zone.now + 1.year)
+      @resource.access_token = jwt_encode({ token: @resource.token })
+    end
+
+    def revoke_token
+      @current_user.update_columns({ token: nil, token_expired_at: nil })
     end
   end
 end
