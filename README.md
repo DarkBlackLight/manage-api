@@ -1,28 +1,28 @@
-# Manage::Api
+# Manage API
+
 Short description and motivation.
 
-## Usage
-How to use my plugin.
+## 安装方法
 
-## Installation
-Add this line to your application's Gemfile:
+1. 添加以下内容到Gemfile
 
 ```ruby
 gem "manage-api"
 ```
 
-And then execute:
+2. 运行以下命令
+
 ```bash
 $ bundle
+$ rails manage_api:install
+$ rails manage_api_engine:install:migrations
 ```
 
-Or install it yourself as:
-```bash
-$ gem install manage-api
-```
 
 ## Contributing
+
 Contribution directions go here.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
