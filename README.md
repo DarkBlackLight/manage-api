@@ -18,8 +18,8 @@ gem "manage-api"
 
 ```bash
 $ bundle
-$ rails manage_api:install
 $ rails manage_api_engine:install:migrations
+$ rails manage_api:install
 ```
 
 3. 添加以下代码至 app/models/application_record.rb
