@@ -54,7 +54,7 @@ $ rails generate scope Admin
 1. 运行以下命令
 
 ```bash
-$ rails g model admin name:string
+$ rails g model admin name:string role:integer --force
 ```
 
 2. 添加下列代码至 app/models/admin.rb
@@ -69,7 +69,7 @@ accepts_nested_attributes_for :user
 ```ruby
 
 def config_source_type
-  ['admin']
+  ['Admin']
 end
 ```
 

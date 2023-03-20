@@ -12,7 +12,7 @@ module ManageControllerConcern
       []
     end
 
-    def config
+    def manage_config
       {
         source_type: config_source_type
       }
