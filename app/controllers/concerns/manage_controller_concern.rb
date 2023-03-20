@@ -8,6 +8,16 @@ module ManageControllerConcern
 
     private
 
+    def config_source_type
+      []
+    end
+
+    def config
+      {
+        source_type: config_source_type
+      }
+    end
+
     def setup_user
       if request.headers['Authorization'] && (request.headers['Authorization'].include? 'Bearer')
         begin

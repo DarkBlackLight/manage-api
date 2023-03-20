@@ -10,7 +10,7 @@ module ManageAuthControllerConcern
     end
 
     def validate_username_password
-      @resource = User.where(username: params[:user][:username]).first
+      @resource = User.where(username: params[:user][:username], source_type: config[:source_type]).first
 
       if @resource&.authenticate(params[:user][:password])
         setup_token
@@ -23,7 +23,7 @@ module ManageAuthControllerConcern
     def validate_email_password
       @resource = User.where('lower(users.email) = ? ', params[:user][:email].downcase).first
 
-      if @resource&.authenticate(params[:user][:password])
+      if @resource&.authenticate(params[:user][:password], source_type: config[:source_type])
         setup_token
         render json: { data: set_show_json(@resource) }, status: :ok
       else

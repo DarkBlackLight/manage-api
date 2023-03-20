@@ -43,16 +43,34 @@ $ rails generate manage
 
 ## 使用方法
 
-定义 Scope, 并运行以下命令
-
-```bash
-$ rails generate scope Scope
-```
-
-示例 Scope 为 Admin
+### 添加新的Scope路径, 示例为 Admin
 
 ```bash
 $ rails generate scope Admin
+```
+
+### 为Scope路径验证添加用户表, (示例为 admin)
+
+1. 运行以下命令
+
+```bash
+$ rails g model admin name:string
+```
+
+2. 添加下列代码至 app/models/admin.rb
+
+```ruby
+has_one :user, as: :source, dependent: :destroy
+accepts_nested_attributes_for :user
+```
+
+3. 添加下列代码至app/controllers/admin_controller.rb
+
+```ruby
+
+def config_source_type
+  ['admin']
+end
 ```
 
 ## License
