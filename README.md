@@ -46,7 +46,7 @@ $ rails generate manage
 ### 添加新的Scope路径, 示例为 Admin
 
 ```bash
-$ rails generate scope Admin
+$ rails generate manage_scope Admin
 ```
 
 ### 为Scope路径验证添加用户表, (示例为 admin)
@@ -71,6 +71,12 @@ accepts_nested_attributes_for :user
 def config_source_type
   ['Admin']
 end
+```
+
+### 通过resource添加新数据表, (示例为 admin 路径下 products)
+
+```bash
+$ rails generate manage_resource admin:products
 ```
 
 ## License

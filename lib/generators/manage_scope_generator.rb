@@ -1,4 +1,4 @@
-class ScopeGenerator < Rails::Generators::NamedBase
+class ManageScopeGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../../', __dir__)
 
   def setup_ability
