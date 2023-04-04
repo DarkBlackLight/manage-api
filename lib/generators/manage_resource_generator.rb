@@ -12,7 +12,7 @@ class ManageResourceGenerator < Rails::Generators::NamedBase
     scope_cap = scope_name.slice(0, 1).capitalize + scope_name.slice(1..-1)
     resource_cap = resource_name.slice(0, 1).capitalize + resource_name.slice(1..-1)
 
-    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/model_controller.rb')
+    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/manage/model_controller.rb')
     dest_file = "app/controllers/#{scope_name}/#{resource_name}_controller.rb"
 
     copy_file source_file, dest_file

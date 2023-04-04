@@ -25,7 +25,7 @@ class ManageScopeGenerator < Rails::Generators::NamedBase
     gsub_file dest_file, 'ManageAbility', "#{scope_cap}Ability"
 
     # Auth Controller
-    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/auth_controller.rb')
+    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/manage/auth_controller.rb')
     dest_file = "app/controllers/#{scope_name}/auth_controller.rb"
 
     copy_file source_file, dest_file
@@ -33,7 +33,7 @@ class ManageScopeGenerator < Rails::Generators::NamedBase
               "class #{scope_cap}::AuthController < #{scope_cap}Controller"
 
     # Resources Controller
-    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/resources_controller.rb')
+    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/manage/resources_controller.rb')
     dest_file = "app/controllers/#{scope_name}/resources_controller.rb"
 
     copy_file source_file, dest_file
