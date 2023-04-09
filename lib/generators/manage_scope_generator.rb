@@ -23,6 +23,7 @@ class ManageScopeGenerator < Rails::Generators::NamedBase
     copy_file source_file, dest_file
     gsub_file dest_file, 'class ManageController', "class #{scope_cap}Controller"
     gsub_file dest_file, 'ManageAbility', "#{scope_cap}Ability"
+    gsub_file dest_file, "'Manage'", "'#{scope_cap}'"
 
     # Auth Controller
     source_file = File.join(Manage::Api::Engine.root, 'app/controllers/manage/auth_controller.rb')
