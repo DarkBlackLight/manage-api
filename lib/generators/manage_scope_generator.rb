@@ -49,6 +49,7 @@ class ManageScopeGenerator < Rails::Generators::NamedBase
     inject_into_file dest_file, :after => "Rails.application.routes.draw do" do
       "
   namespace :#{scope_name} do
+    get 'auth/current'
     post 'auth/validate_email_password', to: 'auth#validate_email_password'
     delete 'auth/logout', to: 'auth#logout'
   end
