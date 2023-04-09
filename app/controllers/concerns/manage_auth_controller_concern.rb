@@ -55,7 +55,7 @@ module ManageAuthControllerConcern
     end
 
     def setup_token(resource)
-      resource.access_token = jwt_encode({ token: @resource.token })
+      resource.access_token = jwt_encode({ token: resource.token })
     end
 
     def revoke_token(resource)
