@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
+    add_index :users, :token
     add_index :users, [:source_type, :source_id]
     add_index :users, [:source_type, :email], unique: true, where: "email IS NOT NULL"
     add_index :users, [:source_type, :username], unique: true, where: "username IS NOT NULL"
