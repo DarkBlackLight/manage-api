@@ -1,4 +1,4 @@
-class Manage::ModelController < Manage::ResourcesController
+class Api::Manage::ModelController < Api::Manage::ResourcesController
 
   private
 

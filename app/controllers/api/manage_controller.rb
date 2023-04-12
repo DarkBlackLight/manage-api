@@ -1,4 +1,4 @@
-class ManageController < ApplicationController
+class Api::ManageController < ApplicationController
   include ManageControllerConcern
 
   def current_ability
