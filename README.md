@@ -37,6 +37,7 @@ gem "manage-api"
 
 ```bash
 $ bundle
+$ rails active_storage:install
 $ rails manage_api_engine:install:migrations
 $ rails generate manage
 ```

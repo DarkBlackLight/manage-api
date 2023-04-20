@@ -40,6 +40,14 @@ class ManageScopeGenerator < Rails::Generators::NamedBase
     copy_file source_file, dest_file
     gsub_file dest_file, 'class Api::Manage::ResourcesController < Api::ManageController',
               "class Api::#{scope_cap}::ResourcesController < Api::#{scope_cap}Controller"
+
+    # Storage Controller
+    source_file = File.join(Manage::Api::Engine.root, 'app/controllers/api/manage/storage_controller.rb')
+    dest_file = "app/controllers/api/#{scope_name}/storage_controller.rb"
+
+    copy_file source_file, dest_file
+    gsub_file dest_file, 'class Api::Manage::StorageController < Api::ManageController',
+              "class Api::#{scope_cap}::StorageController < Api::#{scope_cap}Controller"
   end
 
   def setup_routes
@@ -53,6 +61,8 @@ class ManageScopeGenerator < Rails::Generators::NamedBase
       get 'auth/current'
       post 'auth/validate_email_password', to: 'auth#validate_email_password'
       delete 'auth/logout', to: 'auth#logout'
+
+      post 'storage/upload', to: 'storage#upload'
     end
   end
 "
