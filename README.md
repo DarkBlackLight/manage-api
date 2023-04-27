@@ -2,23 +2,16 @@
 
 ## 安装方法
 
-1. 创建项目 project
+1. 创建项目
 
 ```bash
-$ rails new project --api
-```
-
-示例 项目名称为 igogo
-
-```bash
-$ rails new igogo --api
+$ rails new 项目名称 --api
 ```
 
 2. 添加以下内容到.gitignore
 
 ```text
 .idea
-.vscode
 ```
 
 3. 添加以下内容到Gemfile
@@ -29,8 +22,7 @@ gem 'bcrypt'
 gem 'cancancan'
 gem 'kaminari'
 gem "rack-cors"
-gem "manage-api"
-
+gem "manage-api", git: 'https://github.com/DarkBlackLight/manage-api'
 ```
 
 4. 运行以下命令
@@ -50,7 +42,7 @@ $ rails generate manage
 $ rails generate manage_scope Admin
 ```
 
-### 为Scope路径验证添加用户表, (示例为 admin)
+### 为Scope路径验证添加用户表, (示例为 Admin)
 
 1. 运行以下命令
 
@@ -65,16 +57,7 @@ has_one :user, as: :source, dependent: :destroy
 accepts_nested_attributes_for :user
 ```
 
-3. 添加下列代码至app/controllers/admin_controller.rb
-
-```ruby
-
-def config_source_type
-  ['Admin']
-end
-```
-
-### 通过resource添加新数据表, (示例为 admin 路径下 products)
+### 通过resource添加新控制器, (示例为 admin 路径下 products)
 
 ```bash
 $ rails generate manage_resource admin:products

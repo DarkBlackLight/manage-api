@@ -1,6 +1,10 @@
 
 ##  安装Vue
-✔ Project name: … mishop-admin
+```bash
+$ npm init vue@latest
+```
+
+✔ Project name: … 项目名称-admin
 
 ✔ Add TypeScript? … No
 
