@@ -30,9 +30,9 @@ services:
       - manage_app
     ports:
       - 80:80
-  postgres:
+  manage_postgres:
     image: postgres:13.2
-    container_name: postgres
+    container_name: manage_postgres
     command:
       - "postgres"
       - "-c"
