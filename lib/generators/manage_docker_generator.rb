@@ -7,7 +7,7 @@ class ManageDockerGenerator < Rails::Generators::NamedBase
     source = File.join(Manage::Api::Engine.root, 'deploy')
     dest = "deploy"
 
-    copy_entry source, dest
+    FileUtils.copy_entry source, dest
     gsub_file "deploy/variables", 'manage', app_name
   end
 
@@ -15,7 +15,7 @@ class ManageDockerGenerator < Rails::Generators::NamedBase
     source = File.join(Manage::Api::Engine.root, 'docker')
     dest = "docker"
 
-    copy_entry source, dest
+    FileUtils.copy_entry source, dest
   end
 
   def setup_docker_compose
