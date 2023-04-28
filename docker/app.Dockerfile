@@ -26,7 +26,7 @@ COPY docker/entrypoint.sh entrypoint.sh
 # Adding project files
 COPY . .
 
-RUN rm bin/yarn
+RUN if [ "-e bin/yarn" ] ; rm bin/yarn ; fi
 RUN rm -rf docker
 RUN rm docker-compose.yml
 
