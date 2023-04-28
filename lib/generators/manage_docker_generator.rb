@@ -19,6 +19,8 @@ class ManageDockerGenerator < Rails::Generators::NamedBase
   end
 
   def setup_docker_compose
+    app_name = file_name.downcase
+
     source = File.join(Manage::Api::Engine.root, 'docker-compose.yml')
     dest = "docker-compose.yml"
 
