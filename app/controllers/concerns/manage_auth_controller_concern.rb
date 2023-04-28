@@ -46,12 +46,13 @@ module ManageAuthControllerConcern
     private
 
     def set_show_json(resource)
-      resource.as_json(only: [:id, :username, :email], methods: :access_token)
+      resource.as_json(only: [:id, :username, :email], methods: :access_token,
+                       include: [source: { only: [:id, :name, :role] }])
     end
 
     def create_token(resource)
       resource.update_columns(token: Digest::SHA1.hexdigest(Time.zone.now.to_s + rand(1000).to_s),
-                               token_expired_at: Time.zone.now + 1.year)
+                              token_expired_at: Time.zone.now + 1.year)
     end
 
     def setup_token(resource)
