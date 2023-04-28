@@ -16,6 +16,10 @@ class ManageDockerGenerator < Rails::Generators::NamedBase
     dest = "docker"
 
     FileUtils.copy_entry source, dest
+
+    fileObject = File.open(".ruby-version", "r")
+    gsub_file "docker/app.Dockerfile", '3.0.3', fileObject.read()
+    fileObject.close()
   end
 
   def setup_docker_compose
