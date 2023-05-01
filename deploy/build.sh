@@ -2,8 +2,8 @@
 
 source ./deploy/variables
 
-sudo rm ${APP_NAME}_web.tar.gz
-sudo rm ${APP_NAME}_app.tar.gz
+#sudo rm ${APP_NAME}_web.tar.gz
+#sudo rm ${APP_NAME}_app.tar.gz
 
 sudo docker-compose build
 
