@@ -4,7 +4,7 @@ FROM $APP_NAME as rails_app
 # Base image:
 FROM nginx:1.23.4
 # Install dependencies
-RUN apt-get update -qq && apt-get -y install apache2-utils
+# RUN apt-get update -qq && apt-get -y install apache2-utils
 
 ARG APP_HOST
 
