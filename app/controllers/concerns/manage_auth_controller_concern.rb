@@ -13,7 +13,7 @@ module ManageAuthControllerConcern
     def validate_username_password
       @resource = User.where(username: params[:user][:username], source_type: manage_config[:source_type]).first
 
-      if @resource&.authenticate(params[:user][:password])
+      if @resource&.authenticate(params[:user][:password]) && validate_user(@resource)
         create_token(@resource)
         setup_token(@resource)
         render json: { data: set_show_json(@resource) }, status: :ok
@@ -25,7 +25,7 @@ module ManageAuthControllerConcern
     def validate_email_password
       @resource = User.where('lower(users.email) = ? ', params[:user][:email].downcase).where(source_type: manage_config[:source_type]).first
 
-      if @resource&.authenticate(params[:user][:password])
+      if @resource&.authenticate(params[:user][:password]) && validate_user(@resource)
         create_token(@resource)
         setup_token(@resource)
         render json: { data: set_show_json(@resource) }, status: :ok
@@ -44,6 +44,10 @@ module ManageAuthControllerConcern
     end
 
     private
+
+    def validate_user(resource)
+      true
+    end
 
     def set_show_json(resource)
       resource.as_json(only: [:id, :username, :email], methods: :access_token,
