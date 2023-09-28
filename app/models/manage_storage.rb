@@ -4,4 +4,8 @@ class ManageStorage < ApplicationRecord
   def src
     storage.attached? ? url_for(storage) : nil
   end
+
+  def filename
+    storage.attached? ? storage.filename : nil
+  end
 end
