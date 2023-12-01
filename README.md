@@ -57,10 +57,10 @@ has_one :user, as: :source, dependent: :destroy
 accepts_nested_attributes_for :user
 ```
 
-### 通过resource添加新控制器, (示例为 admin 路径下 products)
+### 通过resource添加新控制器, (示例为 admin 路径下 admins)
 
 ```bash
-$ rails generate manage_resource admin:products
+$ rails generate manage_resource admin:admins
 ```
 
 ## License
