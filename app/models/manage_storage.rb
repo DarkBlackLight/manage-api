@@ -1,4 +1,5 @@
 class ManageStorage < ApplicationRecord
+  belongs_to :source, polymorphic: true
   has_one_attached :storage
 
   def src
