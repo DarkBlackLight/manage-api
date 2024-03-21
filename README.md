@@ -22,7 +22,7 @@ gem 'bcrypt'
 gem 'cancancan'
 gem 'kaminari'
 gem "rack-cors"
-gem "manage-api", git: 'https://github.com/DarkBlackLight/manage-api'
+gem "manage-api", '0.1.0', git: 'https://github.com/DarkBlackLight/manage-api'
 ```
 
 4. 运行以下命令
@@ -67,7 +67,7 @@ $ rails generate manage_resource admin:admins
 ```bash
 bundle config specific_platform true
 bundle lock --add-platform x86_64-linux
-bundle package --all-platforms
+bundle package --all --all-platforms
 ```
 
 ## License
