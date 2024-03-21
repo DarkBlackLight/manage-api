@@ -63,6 +63,13 @@ accepts_nested_attributes_for :user
 $ rails generate manage_resource admin:admins
 ```
 
+### Bundle Package Gems
+```bash
+bundle config specific_platform true
+bundle lock --add-platform x86_64-linux
+bundle package --all-platforms
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
