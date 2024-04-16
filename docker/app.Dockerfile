@@ -16,15 +16,13 @@ WORKDIR $RAILS_ROOT
 ENV RAILS_ENV production
 ENV RACK_ENV production
 
-# Adding gems
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
-RUN bundle install --jobs 20 --retry 5 --without development test
-
 COPY docker/entrypoint.sh entrypoint.sh
 
 # Adding project files
 COPY . .
+
+# Adding gems
+RUN bundle install --local
 
 RUN if [ -e bin/yarn ] ; then rm bin/yarn ; fi
 RUN rm -rf docker
