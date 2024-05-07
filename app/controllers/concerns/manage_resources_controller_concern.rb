@@ -37,7 +37,8 @@ module ManageResourcesControllerConcern
     end
 
     def destroy
-      @resource.destroy
+      @resources = @model.where(id: params[:id].split(','))
+      @resources.destroy_all
       render json: destroy_json, status: :ok
     end
 
