@@ -22,7 +22,7 @@ module ManageControllerConcern
       if request.headers['Authorization'] && (request.headers['Authorization'].include? 'Bearer')
         begin
           decoded = jwt_decode(request.headers['Authorization'].split(' ')[1])
-          @current_user = User.find_by_token(decoded[:token])
+          @current_user = User.where(token: decoded[:token], source_type: manage_config[:source_type]).first
           @current_user = nil unless @current_user && @current_user.token_expired_at && @current_user.token_expired_at > Time.zone.now
         rescue
           @current_user = nil
