@@ -13,6 +13,7 @@ class ManageGenerator < Rails::Generators::Base
     inject_into_file dest_file, :after => "class ApplicationRecord < ActiveRecord::Base\n" do
       <<-'RUBY'
   include Filterable
+  include ResourceModule
       RUBY
     end
   end
