@@ -6,6 +6,15 @@ module ResourceModule
     after_commit :destroy_manage_storage, on: [:destroy]
   end
 
+  def reset_manage_storage
+    self.class.reflect_on_all_associations(:belongs_to).each do |association|
+      if association.options[:class_name] == 'ManageStorage' and self[association.name.to_s + '_id']
+        current_id = self[association.name.to_s + '_id']
+        ManageStorage.find(current_id).update(source: self) if current_id
+      end
+    end
+  end
+
   def setup_manage_storage
     self.class.reflect_on_all_associations(:belongs_to).each do |association|
       if association.options[:class_name] == 'ManageStorage' and self.previous_changes[association.name.to_s + '_id']
