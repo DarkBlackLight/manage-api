@@ -44,8 +44,12 @@ module ManageResourcesControllerConcern
 
     private
 
+    def model_name
+      controller_name.classify
+    end
+
     def set_model
-      @model = controller_name.classify.constantize
+      @model = model_name.constantize
     end
 
     def set_resource
